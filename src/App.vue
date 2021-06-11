@@ -28,10 +28,6 @@ body {
   text-align: center;
   background-color: #f6f6f6;
 }
-input {
-  /*border-style: groove;*/
-  /*width: 200px;*/
-}
 button {
   border-style: groove;
 }
