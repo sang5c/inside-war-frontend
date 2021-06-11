@@ -1,7 +1,7 @@
 <template>
   <div class="inputBox">
     <div class="inputContainer shadow">
-      <input type="text" v-model="newUsername">
+      <input type="text" v-model="newUsername" v-on:keyup.enter="addUser">
     </div>
     <span class="addContainer shadow" v-on:click="addUser">
       <i class="fas fa-plus"></i>
