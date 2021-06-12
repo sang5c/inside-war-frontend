@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ k }}</h1>
+    <img src="../assets/chn.png" alt="내 전 각" height="200px"/>
   </div>
 </template>
 
@@ -18,9 +18,7 @@ export default {
 div {
   padding: 20px 0;
 }
-h1 {
-  color: antiquewhite;
-  font-weight: 900;
-  margin: 2.5rem 0 1.5rem;
+img {
+  margin: 0 0 0;
 }
 </style>

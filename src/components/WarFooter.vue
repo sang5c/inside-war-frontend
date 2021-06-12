@@ -1,6 +1,7 @@
 <template>
   <div>
-    {{ k }}
+    <button>CLEAR ALL</button>
+    <button>RANDOM</button>
   </div>
 </template>
 

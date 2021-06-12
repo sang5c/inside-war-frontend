@@ -4,18 +4,34 @@
       <li v-for="(user, index) in users1" v-bind:key="user" class="shadow"
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
-        {{ user }}
+        <span style="flex-grow: 0.7">
+          img
+        </span>
+        <span style="flex-grow: 0.7">
+          {{ user }}
+        </span>
         <span class="removeBtn"
               @click="removeUser(user, index)"
-              v-bind:class="{hovering: isMouseOver, leave: !isMouseOver}">
+              v-bind:class="{hovering: isMouseOver, leave: !isMouseOver}"
+        >
           <i class="far fa-trash-alt"></i>
         </span>
       </li>
     </ul>
     <ul>
-      <li v-for="user in users2" v-bind:key="user" class="shadow">
-        {{ user }}
-        <span class="removeBtn">
+      <li v-for="(user, index) in users2" v-bind:key="user" class="shadow"
+          @mouseover="isMouseOver = true"
+          @mouseleave="isMouseOver = false">
+        <span style="flex-grow: 0.7">
+          img
+        </span>
+        <span style="flex-grow: 0.7">
+          {{ user }}
+        </span>
+        <span class="removeBtn"
+              @click="removeUser(user, index)"
+              v-bind:class="{hovering: isMouseOver, leave: !isMouseOver}"
+        >
           <i class="far fa-trash-alt"></i>
         </span>
       </li>
@@ -40,6 +56,8 @@ export default {
   methods: {
     removeUser(user, index) {
       console.log(user, index);
+      this.users.splice(index, 1);
+      // users1, 2 배열을 동적으로 변경해줘야 한다.
     }
   }
 }
@@ -55,12 +73,13 @@ ul {
   list-style-type: none;
   margin-top: 0;
   margin-left: 6px;
-  padding-left: 2px;
+  padding-left: 1px;
+  padding-right: 1px;
 }
 
 li {
-  /*display: flex;*/
-  /*justify-content: space-between;*/
+  display: flex;
+  justify-content: space-between;
   width: 200px;
   min-height: 50px;
   height: 50px;

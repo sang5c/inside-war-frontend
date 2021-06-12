@@ -6,7 +6,7 @@
              onblur="placeholder='소환사명'"
              onfocus="placeholder=''"
              v-model="newUsername"
-             v-on:keyup.enter="addUser">
+             v-on:keypress.enter="addUser">
     </div>
     <span class="addContainer shadow" v-on:click="addUser">
       <i class="fas fa-plus addBtn"></i>
@@ -23,6 +23,9 @@ export default {
   },
   methods: {
     addUser() {
+      if (this.newUsername.length === 0) {
+        return
+      }
       console.log(this.newUsername);
       this.clearInput()
     },
