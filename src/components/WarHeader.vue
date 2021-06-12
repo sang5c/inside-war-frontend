@@ -8,15 +8,18 @@
 export default {
   data() {
     return {
-      k: 'header'
+      k: '내 전 각'
     }
   },
 }
 </script>
 
 <style scoped>
+div {
+  padding: 20px 0;
+}
 h1 {
-  color: #2f3b52;
+  color: antiquewhite;
   font-weight: 900;
   margin: 2.5rem 0 1.5rem;
 }

@@ -26,7 +26,7 @@ export default {
 <style>
 body {
   text-align: center;
-  background-color: #f6f6f6;
+  background: linear-gradient(to right, darkred, darkblue);
 }
 button {
   border-style: groove;

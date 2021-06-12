@@ -4,7 +4,7 @@
       <input type="text" v-model="newUsername" v-on:keyup.enter="addUser">
     </div>
     <span class="addContainer shadow" v-on:click="addUser">
-      <i class="fas fa-plus"></i>
+      <i class="fas fa-plus addBtn"></i>
     </span>
   </div>
 </template>
@@ -29,6 +29,10 @@ export default {
 </script>
 
 <style scoped>
+
+div {
+  padding-bottom: 20px;
+}
 
 .inputContainer {
   background: white;
@@ -65,7 +69,4 @@ export default {
   vertical-align: middle;
 }
 
-.closeModalBtn {
-  color: #42b983;
-}
 </style>
