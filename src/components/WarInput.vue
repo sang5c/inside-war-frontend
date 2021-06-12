@@ -1,7 +1,12 @@
 <template>
   <div class="inputBox">
     <div class="inputContainer shadow">
-      <input type="text" v-model="newUsername" v-on:keyup.enter="addUser">
+      <input type="text"
+             placeholder="소환사명"
+             onblur="placeholder='소환사명'"
+             onfocus="placeholder=''"
+             v-model="newUsername"
+             v-on:keyup.enter="addUser">
     </div>
     <span class="addContainer shadow" v-on:click="addUser">
       <i class="fas fa-plus addBtn"></i>
