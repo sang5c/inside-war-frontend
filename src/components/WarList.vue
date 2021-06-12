@@ -1,11 +1,13 @@
 <template>
   <div>
     <ul>
-      <li v-for="user in users1" v-bind:key="user" class="shadow redTeam"
+      <li v-for="(user, index) in users1" v-bind:key="user" class="shadow"
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
         {{ user }}
-        <span class="removeBtn" v-show="isMouseOver">
+        <span class="removeBtn"
+              @click="removeUser(user, index)"
+              v-bind:class="{hovering: isMouseOver, leave: !isMouseOver}">
           <i class="far fa-trash-alt"></i>
         </span>
       </li>
@@ -13,7 +15,7 @@
     <ul>
       <li v-for="user in users2" v-bind:key="user" class="shadow">
         {{ user }}
-        <span class="removeBtn {hovering: isHovering}" v-on:mouseover="mouseover">
+        <span class="removeBtn">
           <i class="far fa-trash-alt"></i>
         </span>
       </li>
@@ -36,8 +38,8 @@ export default {
     this.users2 = (this.users.slice(5));
   },
   methods: {
-    mouseover() {
-      this.isMouseOver = !this.isMouseOver;
+    removeUser(user, index) {
+      console.log(user, index);
     }
   }
 }
@@ -54,11 +56,11 @@ ul {
   margin-top: 0;
   margin-left: 6px;
   padding-left: 2px;
-  text-align: left;
 }
 
 li {
-  text-align: center;
+  /*display: flex;*/
+  /*justify-content: space-between;*/
   width: 200px;
   min-height: 50px;
   height: 50px;
@@ -69,13 +71,22 @@ li {
   border-radius: 5px;
 }
 
-.redTeam {
+.hovering {
+  opacity: 1;
 }
 
+.leave {
+  opacity: 0;
+}
+
+/*.test {*/
+/*  flex-grow: 1;*/
+/*}*/
+
 .removeBtn {
+  display: block;
   float: right;
   cursor: pointer;
-  margin-left: auto;
   color: #de4343;
 }
 
