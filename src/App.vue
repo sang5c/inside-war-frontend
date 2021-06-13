@@ -6,9 +6,10 @@
               v-bind:blueTeam="blueTeam"
               v-on:remove="removeOneUser"
     ></war-list>
-    <war-footer v-on:clearAll="clearAll"
+    <war-button v-on:clearAll="clearAll"
                 v-on:shuffle="shuffle"
-    ></war-footer>
+    ></war-button>
+<!--    <war-footer></war-footer>-->
   </div>
 </template>
 
@@ -16,7 +17,8 @@
 import WarHeader from "@/components/WarHeader";
 import WarInput from "@/components/WarInput";
 import WarList from "@/components/WarList";
-import WarFooter from "@/components/WarFooter";
+import WarButton from "@/components/WarButton";
+// import WarFooter from "@/components/WarFooter";
 
 export default {
   data() {
@@ -65,7 +67,8 @@ export default {
     }
   },
   components: {
-    WarFooter,
+    WarButton,
+    // WarFooter,
     WarList,
     WarInput,
     WarHeader
@@ -81,7 +84,9 @@ export default {
 </script>
 
 <style>
-body {
+html, body {
+  margin: 0;
+  padding: 0;
   text-align: center;
   background-image: url("./assets/background.png"), repeating-linear-gradient(to right, darkblue, darkred);
   background-repeat: no-repeat;
