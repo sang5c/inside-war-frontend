@@ -39,7 +39,7 @@ img {
 .back {
   position: fixed;
   left: 20px;
-  top: 20px;
+  top: 50px;
 }
 
 @import "src/assets/scss/back_button";
