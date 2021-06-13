@@ -17,7 +17,7 @@
           <i class="far fa-trash-alt"></i>
         </span>
       </li>
-      <li v-for="n in 5-redTeam.length" v-bind:key="n+10" class="shadow">
+      <li v-for="n in 5-redTeam.length" v-bind:key="n+10" class="shadow empty">
         <span></span>
       </li>
     </ul>
@@ -38,7 +38,7 @@
           <i class="far fa-trash-alt"></i>
         </span>
       </li>
-      <li v-for="n in 5-blueTeam.length" v-bind:key="n+20" class="shadow">
+      <li v-for="n in 5-blueTeam.length" v-bind:key="n+20" class="shadow empty">
         <span></span>
       </li>
     </ul>
@@ -59,9 +59,6 @@ export default {
       this.$emit('remove', user, index);
     }
   },
-  created() {
-    console.log(this.redTeam.length);
-  }
 }
 </script>
 
@@ -111,4 +108,7 @@ li {
   color: #de4343;
 }
 
+.empty {
+  opacity: 0.7;
+}
 </style>

@@ -28,30 +28,35 @@ export default {
   },
   methods: {
     addOneUser(username) {
-      if (this.users.length >= 10) {
+      let userCount = this.redTeam.length + this.blueTeam.length;
+
+      if (userCount >= 10) {
         alert("10명임");
         return
       }
-      this.users.push(username);
-      console.log(this.users);
 
+      if (this.redTeam.length < 5) {
+        this.redTeam.push(username);
+      } else {
+        this.blueTeam.push(username)
+      }
       this.sliceTeam();
     },
     sliceTeam() {
-      this.redTeam = this.users.slice(0, 5);
-      this.blueTeam = this.users.slice(5);
-      console.log(this.redTeam, this.blueTeam);
+      this.redTeam = this.users.slice(0, (this.users.length+1) / 2);
+      this.blueTeam = this.users.slice((this.users.length+1) / 2);
     },
     removeOneUser(username, index) {
-      console.log("delete ", username, index);
-      this.users.splice(index, 1);
-      this.sliceTeam();
+      console.log("delete", username, index);
+      index >= 5 ? this.blueTeam.splice(index - 5, 1) : this.redTeam.splice(index, 1);
     },
     clearAll() {
       this.users = [];
       this.sliceTeam();
     },
     shuffle() {
+      this.users = this.redTeam.concat(this.blueTeam);
+
       // fisherYatesShuffle
       for (let i = this.users.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1)); //random index
@@ -65,7 +70,14 @@ export default {
     WarList,
     WarInput,
     WarHeader
-  }
+  },
+  // dev test
+  // created() {
+  //   for (let i = 0; i < 10; i++) {
+  //     this.users.push("" + i);
+  //   }
+  //   this.sliceTeam();
+  // }
 }
 </script>
 
