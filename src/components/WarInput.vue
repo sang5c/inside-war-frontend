@@ -23,11 +23,12 @@ export default {
   },
   methods: {
     addUser() {
-      if (this.newUsername.length === 0) {
-        return
+      if (this.newUsername !== '') {
+        // 상위 컴포넌트로 이벤트 전달
+        this.$emit('add', this.newUsername);
+        console.log(this.newUsername);
+        this.clearInput()
       }
-      console.log(this.newUsername);
-      this.clearInput()
     },
     clearInput() {
       this.newUsername = "";

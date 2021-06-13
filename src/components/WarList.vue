@@ -41,9 +41,9 @@
 
 <script>
 export default {
+  props: ['propsdata'],
   data() {
     return {
-      users: ["user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10"],
       users1: [],
       users2: [],
       isMouseOver: false,
@@ -55,15 +55,16 @@ export default {
       name: '',
       rank: '',
     };
-    this.users1 = this.users.slice(0, 5);
-    this.users2 = (this.users.slice(5));
+    this.users1 = this.propsdata.slice(0, 5);
+    this.users2 = (this.propsdata.slice(5));
+    console.log(this.users1, this.users2);
 
     this.test = Array(5).fill(Object.create(user))
   },
   methods: {
     removeUser(user, index) {
       console.log(user, index);
-      this.users.splice(index, 1);
+      this.propsdata.splice(index, 1);
       // users1, 2 배열을 동적으로 변경해줘야 한다.
     },
     addUser(username) {

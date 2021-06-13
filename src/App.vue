@@ -1,8 +1,8 @@
 <template>
   <div>
     <war-header></war-header>
-    <war-input></war-input>
-    <war-list></war-list>
+    <war-input v-on:add="addOneUser"></war-input>
+    <war-list v-bind:propsdata="users"></war-list>
     <war-footer></war-footer>
   </div>
 </template>
@@ -14,6 +14,17 @@ import WarList from "@/components/WarList";
 import WarFooter from "@/components/WarFooter";
 
 export default {
+  data() {
+    return {
+      users: ["user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10"],
+    }
+  },
+  methods: {
+    addOneUser(username) {
+      this.users.push(username);
+      console.log(this.users);
+    }
+  },
   components: {
     WarFooter,
     WarList,
