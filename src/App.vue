@@ -40,7 +40,6 @@ export default {
       } else {
         this.blueTeam.push(username)
       }
-      this.sliceTeam();
     },
     sliceTeam() {
       this.redTeam = this.users.slice(0, (this.users.length+1) / 2);
