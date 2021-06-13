@@ -29,6 +29,7 @@ export default {
   methods: {
     addOneUser(username) {
       if (this.users.length >= 10) {
+        alert("10명임");
         return
       }
       this.users.push(username);
