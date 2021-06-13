@@ -49,7 +49,7 @@ export default {
   props: ['redTeam', 'blueTeam'],
   data() {
     return {
-      isMouseOver: [false]
+      isMouseOver: []
     }
   },
   methods: {
@@ -64,6 +64,11 @@ export default {
       this.$set(this.isMouseOver, index, false)
     }
   },
+  created() {
+    for (let i = 0; i < 10; i++) {
+      this.isMouseOver.push(false);
+    }
+  }
 }
 </script>
 
