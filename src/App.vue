@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="top">
     <war-header v-bind:is-fixed="isFixed"
                 v-on:main="main"
     />
@@ -99,11 +99,20 @@ html, body {
   margin: 0;
   padding: 0;
   text-align: center;
-  background-image: url("./assets/background.png"), repeating-linear-gradient(to right, darkblue, darkred);
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to right, darkblue, darkred);
+}
+
+.top {
+  height: 100%;
+  min-height: 100%;
+  background-image: url("./assets/background.png"), linear-gradient(to right, darkblue, darkred);
   background-repeat: no-repeat;
   background-position: center;
+  /*background-attachment: fixed;*/
+
   background-size: 100%;
-  height: 100vh;
 }
 
 button {

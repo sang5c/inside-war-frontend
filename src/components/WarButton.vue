@@ -31,7 +31,8 @@ export default {
 <style lang="scss" scoped>
 
 span {
-  padding: 20px;
+  padding: 40px;
+  padding-bottom: 100px;
 }
 
 @import "src/assets/scss/random_button";
