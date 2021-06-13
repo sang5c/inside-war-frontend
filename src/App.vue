@@ -1,15 +1,21 @@
 <template>
   <div>
-    <war-header></war-header>
-    <war-input v-on:add="addOneUser"></war-input>
+    <war-header v-bind:is-fixed="isFixed"
+                v-on:main="main"
+    />
+    <war-input v-on:add="addOneUser"
+               v-bind:is-fixed="isFixed"
+    />
     <war-list v-bind:redTeam="redTeam"
               v-bind:blueTeam="blueTeam"
+              v-bind:is-fixed="isFixed"
               v-on:remove="removeOneUser"
-    ></war-list>
+    />
     <war-button v-on:clearAll="clearAll"
                 v-on:shuffle="shuffle"
-    ></war-button>
-<!--    <war-footer></war-footer>-->
+                v-on:fix="fix"
+                v-bind:is-fixed="isFixed"
+    />
   </div>
 </template>
 
@@ -18,7 +24,6 @@ import WarHeader from "@/components/WarHeader";
 import WarInput from "@/components/WarInput";
 import WarList from "@/components/WarList";
 import WarButton from "@/components/WarButton";
-// import WarFooter from "@/components/WarFooter";
 
 export default {
   data() {
@@ -26,6 +31,7 @@ export default {
       users: [],
       redTeam: [],
       blueTeam: [],
+      isFixed: false,
     }
   },
   methods: {
@@ -44,8 +50,8 @@ export default {
       }
     },
     sliceTeam() {
-      this.redTeam = this.users.slice(0, (this.users.length+1) / 2);
-      this.blueTeam = this.users.slice((this.users.length+1) / 2);
+      this.redTeam = this.users.slice(0, (this.users.length + 1) / 2);
+      this.blueTeam = this.users.slice((this.users.length + 1) / 2);
     },
     removeOneUser(username, index) {
       console.log("delete", username, index);
@@ -64,11 +70,16 @@ export default {
         [this.users[i], this.users[j]] = [this.users[j], this.users[i]]; // swap
       }
       this.sliceTeam();
+    },
+    fix() {
+      this.isFixed = true;
+    },
+    main() {
+      this.isFixed = false;
     }
   },
   components: {
     WarButton,
-    // WarFooter,
     WarList,
     WarInput,
     WarHeader
@@ -101,5 +112,9 @@ button {
 
 .shadow {
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
+}
+
+.hide {
+  display: none;
 }
 </style>

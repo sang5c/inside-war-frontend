@@ -1,23 +1,27 @@
 <template>
   <div>
     <span>
-        <button class="fun-btn" @click="onClickRandom">두근두근</button>
-    </span>
-    <span style="display: block">
-<!--      <button class="btn draw-border" @click="onClickClear">비우기</button>-->
+      <button class="fun-btn"
+              @click="fixTeam"
+              v-show="!isFixed"
+      >
+        RANDOM !
+      </button>
     </span>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['isFixed'],
   methods: {
     onClickClear() {
       console.log("CLEAR");
       this.$emit('clearAll');
     },
-    onClickRandom() {
+    fixTeam() {
       console.log("RANDOM");
+      this.$emit('fix');
       this.$emit('shuffle');
     }
   }
@@ -25,73 +29,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 span {
-  padding: 2px;
+  padding: 20px;
 }
 
-/* add default color for animation start  */
-/* toggle this class */
-.color-bg-start {
-  background-color: salmon;
-}
-
-/* toggle class bg-animate-color */
-.bg-animate-color {
-  animation: random-bg .5s linear infinite;
-}
-
-/* add animation to bg color  */
-@keyframes random-bg {
-  from {
-    filter: hue-rotate(0);
-  }
-  to {
-    filter: hue-rotate(360deg);
-  }
-}
-
-.fun-btn {
-  /* change bg color to get different hues    */
-  background-color: salmon;
-  color: white;
-  padding: 2em 3em;
-  border: none;
-  transition: all .3s ease;
-  border-radius: 5px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  outline: none;
-  align-self: center;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.fun-btn:hover {
-  animation: random-bg .5s linear infinite, grow 1300ms ease infinite;
-}
-
-.start-fun {
-  background-color: #fff !important;
-  /* change color of button text when fun is started   */
-  color: salmon !important;
-}
-
-/* pulsating effect on button */
-@keyframes grow {
-  0% {
-    transform: scale(1);
-  }
-  14% {
-    transform: scale(1.3);
-  }
-  28% {
-    transform: scale(1);
-  }
-  42% {
-    transform: scale(1.3);
-  }
-  70% {
-    transform: scale(1);
-  }
-}
+@import "src/assets/scss/random_button";
 </style>

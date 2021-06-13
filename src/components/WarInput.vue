@@ -1,5 +1,7 @@
 <template>
-  <div class="inputBox">
+  <div class="inputBox"
+       v-show="!isFixed"
+  >
     <div class="inputContainer shadow">
       <input type="text"
              placeholder="소환사명"
@@ -16,6 +18,7 @@
 
 <script>
 export default {
+  props: ['isFixed'],
   data() {
     return {
       newUsername: ""
@@ -40,7 +43,7 @@ export default {
 <style scoped>
 
 div {
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 }
 
 .inputContainer {
