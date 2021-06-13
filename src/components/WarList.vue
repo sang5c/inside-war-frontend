@@ -1,14 +1,14 @@
 <template>
   <div>
     <ul>
-      <li v-for="(user, index) in users1" v-bind:key="user" class="shadow"
+      <li v-for="(user, index) in test" v-bind:key="index" class="shadow"
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
         <span style="flex-grow: 0.7">
           img
         </span>
         <span style="flex-grow: 0.7">
-          {{ user }}
+          {{ user.name }}
         </span>
         <span class="removeBtn"
               @click="removeUser(user, index)"
@@ -47,17 +47,28 @@ export default {
       users1: [],
       users2: [],
       isMouseOver: false,
+      test: [],
     }
   },
   created: function () {
+    let user = {
+      name: '',
+      rank: '',
+    };
     this.users1 = this.users.slice(0, 5);
     this.users2 = (this.users.slice(5));
+
+    this.test = Array(5).fill(Object.create(user))
   },
   methods: {
     removeUser(user, index) {
       console.log(user, index);
       this.users.splice(index, 1);
       // users1, 2 배열을 동적으로 변경해줘야 한다.
+    },
+    addUser(username) {
+      // 왼쪽라인 채우고 다찼으면 오른쪽 라인을 채워주는 형태로 구현
+      console.log(username);
     }
   }
 }

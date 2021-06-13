@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/chn.png" alt="내 전 각" height="200px"/>
+    <img src="../assets/title.png" alt="내 전 각"/>
   </div>
 </template>
 
