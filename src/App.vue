@@ -2,8 +2,13 @@
   <div>
     <war-header></war-header>
     <war-input v-on:add="addOneUser"></war-input>
-    <war-list v-bind:propsdata="users"></war-list>
-    <war-footer></war-footer>
+    <war-list v-bind:redTeam="redTeam"
+              v-bind:blueTeam="blueTeam"
+              v-on:remove="removeOneUser"
+    ></war-list>
+    <war-footer v-on:clearAll="clearAll"
+                v-on:shuffle="shuffle"
+    ></war-footer>
   </div>
 </template>
 
@@ -16,13 +21,42 @@ import WarFooter from "@/components/WarFooter";
 export default {
   data() {
     return {
-      users: ["user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10"],
+      users: [],
+      redTeam: [],
+      blueTeam: [],
     }
   },
   methods: {
     addOneUser(username) {
+      if (this.users.length >= 10) {
+        return
+      }
       this.users.push(username);
       console.log(this.users);
+
+      this.sliceTeam();
+    },
+    sliceTeam() {
+      this.redTeam = this.users.slice(0, 5);
+      this.blueTeam = this.users.slice(5);
+      console.log(this.redTeam, this.blueTeam);
+    },
+    removeOneUser(username, index) {
+      console.log("delete ", username, index);
+      this.users.splice(index, 1);
+      this.sliceTeam();
+    },
+    clearAll() {
+      this.users = [];
+      this.sliceTeam();
+    },
+    shuffle() {
+      // fisherYatesShuffle
+      for (let i = this.users.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); //random index
+        [this.users[i], this.users[j]] = [this.users[j], this.users[i]]; // swap
+      }
+      this.sliceTeam();
     }
   },
   components: {
@@ -39,9 +73,11 @@ body {
   text-align: center;
   background: linear-gradient(to right, darkred, darkblue);
 }
+
 button {
   border-style: groove;
 }
+
 .shadow {
   box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
 }
