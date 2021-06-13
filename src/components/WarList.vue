@@ -4,7 +4,7 @@
       <li v-for="(user, index) in redTeam" v-bind:key="index" class="shadow"
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
-        <span style="flex-grow: 0.7">
+        <span style="flex-grow: 0.2">
           img
         </span>
         <span style="flex-grow: 0.7">
@@ -25,7 +25,7 @@
       <li v-for="(user, index) in blueTeam" v-bind:key="index" class="shadow"
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
-        <span style="flex-grow: 0.7">
+        <span style="flex-grow: 0.2">
           img
         </span>
         <span style="flex-grow: 0.7">
@@ -70,8 +70,7 @@ div {
 
 ul {
   list-style-type: none;
-  margin-top: 0;
-  margin-left: 6px;
+  margin: 6px;
   padding-left: 1px;
   padding-right: 1px;
 }

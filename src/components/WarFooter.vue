@@ -1,7 +1,11 @@
 <template>
   <div>
-    <button @click="onClickClear">CLEAR ALL</button>
-    <button @click="onClickRandom">RANDOM</button>
+    <span>
+      <button class="btn draw-border" @click="onClickClear">비우기</button>
+    </span>
+    <span>
+      <button class="btn draw-border" @click="onClickRandom">섞기</button>
+    </span>
   </div>
 </template>
 
@@ -9,7 +13,7 @@
 export default {
   methods: {
     onClickClear() {
-      console.log("CLICK");
+      console.log("CLEAR");
       this.$emit('clearAll');
     },
     onClickRandom() {
@@ -20,6 +24,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '~@/assets/scss/footer_button.scss';
 
+span {
+  padding: 5px;
+}
 </style>

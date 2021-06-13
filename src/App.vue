@@ -83,7 +83,11 @@ export default {
 <style>
 body {
   text-align: center;
-  background: linear-gradient(to right, darkred, darkblue);
+  background-image: url("./assets/background.png"), repeating-linear-gradient(to right, darkblue, darkred);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  height: 100vh;
 }
 
 button {
