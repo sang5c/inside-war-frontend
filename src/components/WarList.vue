@@ -5,7 +5,7 @@
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
         <span style="flex-grow: 0.2">
-          img
+          <img src="../assets/flamme.gif" alt="fire">
         </span>
         <span style="flex-grow: 0.7">
           {{ user }}
@@ -26,7 +26,7 @@
           @mouseover="isMouseOver = true"
           @mouseleave="isMouseOver = false">
         <span style="flex-grow: 0.2">
-          img
+          <img src="../assets/flamme.gif" alt="fire">
         </span>
         <span style="flex-grow: 0.7">
           {{ user }}
@@ -70,7 +70,7 @@ div {
 
 ul {
   list-style-type: none;
-  margin: 6px;
+  margin: 2px;
   padding-left: 1px;
   padding-right: 1px;
 }
