@@ -2,8 +2,8 @@
   <div>
     <ul>
       <li v-for="(user, index) in redTeam" v-bind:key="index" class="shadow"
-          @mouseover="isMouseOver = true"
-          @mouseleave="isMouseOver = false">
+          @mouseover="up(index)"
+          @mouseleave="down(index)">
         <span style="flex-grow: 0.2">
           <img src="../assets/flamme.gif" alt="fire">
         </span>
@@ -12,9 +12,8 @@
         </span>
         <span class="removeBtn"
               @click="removeUser(user, index)"
-              v-bind:class="{hovering: isMouseOver, leave: !isMouseOver}"
         >
-          <i class="far fa-trash-alt"></i>
+          <i class="far fa-trash-alt" v-bind:class="{hovering: isMouseOver[index], leave: !isMouseOver[index]}"></i>
         </span>
       </li>
       <li v-for="n in 5-redTeam.length" v-bind:key="n+10" class="shadow empty">
@@ -23,8 +22,8 @@
     </ul>
     <ul>
       <li v-for="(user, index) in blueTeam" v-bind:key="index" class="shadow"
-          @mouseover="isMouseOver = true"
-          @mouseleave="isMouseOver = false">
+          @mouseover="up(index+5)"
+          @mouseleave="down(index+5)">
         <span style="flex-grow: 0.2">
           <img src="../assets/flamme.gif" alt="fire">
         </span>
@@ -33,7 +32,7 @@
         </span>
         <span class="removeBtn"
               @click="removeUser(user, index+5)"
-              v-bind:class="{hovering: isMouseOver, leave: !isMouseOver}"
+              v-bind:class="{hovering: isMouseOver[index+5], leave: !isMouseOver[index+5]}"
         >
           <i class="far fa-trash-alt"></i>
         </span>
@@ -50,13 +49,19 @@ export default {
   props: ['redTeam', 'blueTeam'],
   data() {
     return {
-      isMouseOver: false,
+      isMouseOver: [false]
     }
   },
   methods: {
     removeUser(user, index) {
       console.log(user, index);
       this.$emit('remove', user, index);
+    },
+    up(index) {
+      this.$set(this.isMouseOver, index, true)
+    },
+    down(index) {
+      this.$set(this.isMouseOver, index, false)
     }
   },
 }
