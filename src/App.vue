@@ -30,7 +30,6 @@ html, body {
   background-repeat: no-repeat;
   background-position: center;
   /*background-attachment: fixed;*/
-
   background-size: 100%;
 }
 </style>
